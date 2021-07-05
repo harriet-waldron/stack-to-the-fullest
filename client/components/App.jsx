@@ -1,20 +1,20 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 
-import { fetchFruits } from '../actions'
+import { fetchPlanets } from '../actions'
 
 function App (props) {
   useEffect(() => {
-    props.dispatch(fetchFruits())
+    props.dispatch(fetchPlanets())
   }, [])
 
   return (
     <>
       <div className='app'>
-        <h1>Fullstack Boilerplate - with Fruits!</h1>
+        <h1>Fullstack Boilerplate - with Planets!</h1>
         <ul>
-          {props.fruits.map(fruit => (
-            <li key={fruit}>{fruit}</li>
+          {props.planets.map(planet => (
+            <li key={planet}>{planet}</li>
           ))}
         </ul>
       </div>
@@ -23,7 +23,7 @@ function App (props) {
 }
 const mapStateToProps = (globalState) => {
   return {
-    fruits: globalState.fruits
+    planets: globalState.planets
   }
 }
 

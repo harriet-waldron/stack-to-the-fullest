@@ -18,3 +18,26 @@ export function fetchPlanets () {
       })
   }
 }
+
+
+
+import { getMaoriSky } from '../apis/maorisky'
+
+export const SET_MAORISKY = 'SET_MAORISKY'
+
+export function setMaoriSky (maorisky) {
+  return {
+    type: SET_MAORISKY,
+    maorisky
+  }
+}
+
+export function fetchMaoriSky () {
+  return dispatch => {
+    return getMaoriSky()
+      .then(maorisky => {
+        dispatch(setMaoriSky(maorisky))
+        return null
+      })
+  }
+}

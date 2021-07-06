@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react'
-import { connect } from 'react-redux'
+import React from 'react'
+
 
 //import { fetchPlanets } from '../actions'
 
-import Header from 'Header'
-import Maori from 'Maori'
+import Header from './Header'
+import MaoriStars from './MaoriStars'
 
 function App () {
  
@@ -12,13 +12,12 @@ function App () {
     <>
       <div className='app'>
         <Header />
-{/* if id maori <Maori /> */}
-
         <ul>
-          <Maori />
+          <MaoriStars />
         </ul>
       </div>
     </>
   )
 }
 
+export default App

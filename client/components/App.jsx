@@ -1,30 +1,24 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 
-import { fetchPlanets } from '../actions'
+//import { fetchPlanets } from '../actions'
 
-function App (props) {
-  useEffect(() => {
-    props.dispatch(fetchPlanets())
-  }, [])
+import Header from 'Header'
+import Maori from 'Maori'
 
+function App () {
+ 
   return (
     <>
       <div className='app'>
-        <h1>Fullstack Boilerplate - with Planets!</h1>
+        <Header />
+{/* if id maori <Maori /> */}
+
         <ul>
-          {props.planets.map(planet => (
-            <li key={planet}>{planet}</li>
-          ))}
+          <Maori />
         </ul>
       </div>
     </>
   )
 }
-const mapStateToProps = (globalState) => {
-  return {
-    planets: globalState.planets
-  }
-}
 
-export default connect(mapStateToProps)(App)

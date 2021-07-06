@@ -7,7 +7,6 @@ const router = express.Router()
 router.get('/', (req, res) => {
   db.getMaoriSky()
     .then(results => {
-      console.log(results)
       res.json({ maorisky: results.map(maorisky => maorisky) })
       return null
     })

@@ -1,11 +1,11 @@
 // astral mythology in te ao maori
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 import { fetchMaoriSky } from '../actions'
 
 function MaoriStars (props) {
-  console.log(props)
   
   useEffect(() => {
     props.dispatch(fetchMaoriSky())
@@ -14,14 +14,18 @@ function MaoriStars (props) {
 
   return (
     props.maorisky.map(maorisky => (
-  <li key={maorisky}>{maorisky.constname} // {maorisky.engname}</li>
-))
+      <li key={maorisky.constname}>
+        <Link to={`/${maorisky.constname}`}>
+          {maorisky.constname} // {maorisky.engname}
+        </Link>
+      </li>
+    ))
   )
 
-
 }
+
+
 const mapStateToProps = (globalState) => {
-  console.log(globalState)
   return {
     maorisky: globalState.maorisky
   }

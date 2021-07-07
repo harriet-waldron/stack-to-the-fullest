@@ -12,9 +12,7 @@ import { fetchMaoriSky } from '../actions'
 const constname = props.match.params.constname
 
 const found = props.maoriskies.find(maorisky => maorisky.constname == constname)
-
-console.log(props.maoriskies, found)
-
+console.log(found)
   return (
     <div>
     <h2>

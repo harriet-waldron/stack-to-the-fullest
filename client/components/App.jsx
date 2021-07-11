@@ -9,7 +9,7 @@ import MaoriStars from './MaoriStars'
 import MaoriStarMyth from './MaoriStarMyth'
 import AddStory from './AddStory'
 import D3Prac from './D3Prac'
-import UserStory from './UserStory'
+// import UserStory from './UserStory'
 import Nav from './Nav'
 import Register from './Register'
 import SignIn from './SignIn'
@@ -20,6 +20,9 @@ function App () {
     <>
       <div className='app'>
       <Route path='/' component={Nav} />
+
+      <D3Prac />
+
       <Route path='/' component={Header} />
       <Route exact path='/' component={MaoriStars} />
       <Route exact path='/' component={AddStory} />
@@ -28,7 +31,7 @@ function App () {
       <Route path='/:constname' component={MaoriStarMyth} />
       {/* <Route path='/:newstory' component={UserStory} /> */}
       
-      <D3Prac />
+      
       
       </div>
     </>

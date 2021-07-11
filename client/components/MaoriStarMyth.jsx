@@ -12,16 +12,16 @@ import { fetchMaoriSky } from '../actions'
 const constname = props.match.params.constname
 
 const found = props.maoriskies.find(maorisky => maorisky.constname == constname)
+console.log(found)
 
   return (
     <div>
+
     <h2>
      {constname}
     </h2>
-    <p> 
-     {found.story}
-     <br />
-     {found.userstory}
+    <p> Myth
+      {/* {found.story} */}
     </p>
 
     </div>

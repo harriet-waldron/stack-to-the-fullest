@@ -41,3 +41,24 @@ export function fetchMaoriSky () {
       })
   }
 }
+
+import { getUserStories, addUserStory, updateUserStory, deleteUserStory } from '../apis/userstory'
+
+export const SET_USERSTORY = 'SET_USERSTORY'
+
+export function setUserStory (userstories) {
+  return {
+    type: SET_USERSTORY,
+    userstories
+  }
+}
+
+export function fetchUserStories () {
+  return dispatch => {
+    return getUserStories()
+      .then(userstory => {
+        dispatch(setUserStories(userstory))
+        return null
+      })
+  }
+}

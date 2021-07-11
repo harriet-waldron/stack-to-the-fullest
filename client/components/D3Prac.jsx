@@ -7,7 +7,7 @@ const RD3Component = rd3.Component;
 // export default function D3Prac() {
 
   
-class D3Prac extends React.Component {
+class D3Prac extends React.Component { 
   constructor(props) {
     super(props);
     this.myRef = React.createRef();

@@ -4,7 +4,6 @@ exports.up = function (knex) {
     table.string('constname')
     table.string('engname')
     table.string('story')
-    table.string('userstory')
   })
 }
 

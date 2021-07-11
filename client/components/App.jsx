@@ -25,11 +25,11 @@ function App () {
 
       <Route path='/' component={Header} />
       <Route exact path='/' component={MaoriStars} />
-      <Route exact path='/' component={AddStory} />
-      <Route path='/register' component={Register} />
-      <Route path='/signin' component={SignIn} />
-      <Route path='/:constname' component={MaoriStarMyth} />
-      {/* <Route path='/:newstory' component={UserStory} /> */}
+      <Route exact path='/userstories' component={AddStory} />
+      <Route exact path='/register' component={Register} />
+      <Route exact path='/signin' component={SignIn} />
+      <Route exact path='/:constname' component={MaoriStarMyth} />
+      
       
       
       

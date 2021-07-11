@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 import { addStory } from '../apis/maorisky'
 
-function AddStory ({ setStories, closeAddForm, setError }) {
+function AddStory ({ setStories, closeAddForm }) {
   const [newStory, setNewStory] = useState(false)
 
   function handleAddChange (e) {
@@ -18,7 +18,7 @@ function AddStory ({ setStories, closeAddForm, setError }) {
     addStory(story)
       .then(setStories)
       .then(closeAddForm)
-      .catch(err => setError(err.message))
+      .catch(err => (err.message))
   }
 
   const { name: addingName, story: addingStory } = newStory
@@ -42,7 +42,7 @@ function AddStory ({ setStories, closeAddForm, setError }) {
           onChange={handleAddChange}></input>
 
         <button type='button' onClick={handleAdd}>Add Story</button>
-        {/* <button type='button' onClick={closeAddForm}>Close</button> */}
+        <button type='button' onClick={closeAddForm}>Close</button>
       </form>
     </>
   )

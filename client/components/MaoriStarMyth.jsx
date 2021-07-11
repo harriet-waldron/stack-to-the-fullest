@@ -18,8 +18,8 @@ console.log(found)
     <h2>
      {constname}
     </h2>
-    <p>
-     {found.story}
+    <p> ??
+     {/* {found.story} */}
     </p>
 
     </div>

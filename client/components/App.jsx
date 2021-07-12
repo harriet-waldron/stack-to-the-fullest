@@ -8,6 +8,7 @@ import Header from './Header'
 import MaoriStars from './MaoriStars'
 import MaoriStarMyth from './MaoriStarMyth'
 import AddStory from './AddStory'
+import UserStory from './UserStory'
 import D3Prac from './D3Prac'
 // import UserStory from './UserStory'
 import Nav from './Nav'
@@ -26,6 +27,7 @@ function App () {
       <Route path='/' component={Header} />
       <Route exact path='/' component={MaoriStars} />
       <Route exact path='/userstories' component={AddStory} />
+      <Route exact path='/userstories' component={UserStory} />
       <Route exact path='/register' component={Register} />
       <Route exact path='/signin' component={SignIn} />
       <Route exact path='/:constname' component={MaoriStarMyth} />

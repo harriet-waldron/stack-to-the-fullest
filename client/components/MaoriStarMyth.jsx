@@ -11,8 +11,15 @@ import { fetchMaoriSky } from '../actions'
 
 const constname = props.match.params.constname
 
-const found = props.maoriskies.find(maorisky => maorisky.constname == constname)
-console.log(found)
+// function findStory() {
+// const found = props.maoriskies.find(maorisky => maorisky.constname == constname)
+// console.log(found) //add an if underfined return statement
+//   if (found !== 'undefined') {
+//     return found.story
+//    } else {
+//      return null
+//    }
+// }
 
   return (
     <div>
@@ -21,7 +28,7 @@ console.log(found)
      {constname}
     </h2>
     <p> Myth
-      {/* {found.story} */}
+      {/* {findStory()} */}
     </p>
 
     </div>

@@ -31,10 +31,11 @@ export function updateUserStory (userstory) {
 }
 
 export function deleteUserStory (id) {
+  console.log('this is the id', id)
   return request.delete(`${rootUrl}/${id}`)
     .set(acceptJsonHeader)
     .set(getAuthorizationHeader())
-    .then(res => res.body.userstory)
+    .then(res => res.body)
     .catch(logError)
 }
 

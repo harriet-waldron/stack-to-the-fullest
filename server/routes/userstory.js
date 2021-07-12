@@ -38,16 +38,11 @@ router.post('/', getTokenDecoder(), async (req, res) => {
   }
 })
 
-// PUT /api/v1/fruits
-router.put('/', getTokenDecoder(), async (req, res) => {
-  const newStory = req.body
-  if (req.user) {
-    console.log('username:', req.user.username)
-  } else {
-    console.log('authentication token not provided')
-  }
+
+router.delete('/:id', getTokenDecoder(), async (req, res) => {
+  const id = Number(req.params.id)
   try {
-    const story = await db.updateStory(newStory, req.user)
+    const story = await db.deleteUserStory(id, req.user)
     res.json({ story })
   } catch (err) {
     if (err.message === 'Unauthorized') {
@@ -59,18 +54,32 @@ router.put('/', getTokenDecoder(), async (req, res) => {
   }
 })
 
-// DELETE /api/v1/fruits
-router.delete('/:id', getTokenDecoder(), async (req, res) => {
-  const id = Number(req.params.id)
-  try {
-    const story = await db.deleteStory(id, req.user)
-    res.json({ story })
-  } catch (err) {
-    if (err.message === 'Unauthorized') {
-      return res.status(403).send(
-        'Unauthorized, please log in.'
-      )
-    }
-    res.status(500).send(err.message)
-  }
-})
+
+// router.delete('/:id', (req, res) => {
+//   const id = Number(req.params.id)
+//     return db.deleteUserStory(id)
+//     .then(() => {
+//       return res.json({status:'deleted'})
+//     })
+// })
+
+// PUT /api/v1/fruits
+// router.put('/', getTokenDecoder(), async (req, res) => {
+//   const newStory = req.body
+//   if (req.user) {
+//     console.log('username:', req.user.username)
+//   } else {
+//     console.log('authentication token not provided')
+//   }
+//   try {
+//     const story = await db.updateStory(newStory, req.user)
+//     res.json({ story })
+//   } catch (err) {
+//     if (err.message === 'Unauthorized') {
+//       return res.status(403).send(
+//         'Unauthorized, please log in.'
+//       )
+//     }
+//     res.status(500).send(err.message)
+//   }
+// })

@@ -71,11 +71,22 @@ export function addNewUserStory (newstory) {
   }
 }
 
+export const DEL_USER_STORY = 'DEL_USER_STORY'
+
+export function delUserStory (id) {
+  return {
+    type: DEL_USER_STORY,
+    id: id
+  }
+}
+
 export function deleteStory (id) {
-  return (dispatch) => {
+  return dispatch => {
     deleteUserStory(id)
+   //here is the issue
       .then((output) => {
-        dispatch(setUserStory(output))
+        console.log('this is the output', output)
+        dispatch(delUserStory(output))
       })
   }
 }

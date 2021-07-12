@@ -5,7 +5,6 @@ function getUserStories (db = connection) {
 }
 
 async function addUserStory (userstory, user, db = connection) {
-  console.log(userstory)
 
   userstory.added_by_user = user.id
   return db('userstories')
@@ -20,7 +19,17 @@ async function addUserStory (userstory, user, db = connection) {
     // .then(sort)
 }
 
+async function deleteUserStory (id, userstory, user, db = connection) {
+  // console.log(userstory)
+
+  userstory.added_by_user = user.id
+  return db('userstories')
+    .delete()
+    .where('id', id)
+}
+
 module.exports = {
   getUserStories, 
-  addUserStory
+  addUserStory,
+  deleteUserStory
 }

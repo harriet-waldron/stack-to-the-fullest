@@ -5,24 +5,22 @@ import { fetchUserStories, deleteStory } from '../actions'
 
 
 function UserStory (props) {
-console.log(props)
+
+  
   useEffect(() => {
-      props.dispatch(fetchUserStories())
-    }, [])
-
-    function handleDelete (userstory) {
+    props.dispatch(fetchUserStories())
+  }, [])
+  
+  function handleDelete (id) {
       //const story = { ...newStory }
-      props.dispatch(deleteStory(userstory.id))
-        .then(setStories)
-        .then(getUserStories)
-        .catch(err => (err.message))
-    }
-
+    props.dispatch(deleteStory(id))
+  }
+  
   return (
-    props.userstory.map(userstory => (
-      <li key={userstory.name}>
+    props.userstory.map((userstory, id) => (
+      <li key={userstory.id}>
           {userstory.name} // {userstory.userstory}
-          <button type='button' onClick={handleDelete}>Delete Story</button>
+          <button type='button' onClick={() => handleDelete(id)}>Delete Story</button>
       </li>
       
     ))

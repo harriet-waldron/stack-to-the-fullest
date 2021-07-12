@@ -70,3 +70,12 @@ export function addNewUserStory (newstory) {
       })
   }
 }
+
+export function deleteStory (id) {
+  return (dispatch) => {
+    deleteUserStory(id)
+      .then((output) => {
+        dispatch(setUserStory(output))
+      })
+  }
+}

@@ -46,7 +46,7 @@ function AddStory ({ setStories, closeAddForm, dispatch }) {
           onChange={handleAddChange}></input>
 
         <button type='button' onClick={handleAdd}>Add Story</button>
-        <button type='button' onClick={closeAddForm}>Close</button>
+        {/* <button type='button' onClick={closeAddForm}>Close</button> */}
       </form>
     </>
   )

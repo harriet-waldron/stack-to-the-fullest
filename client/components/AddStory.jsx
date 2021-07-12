@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-
+import { connect } from 'react-redux'
 import { getUserStories, addUserStory } from '../apis/userstory'
-import { fetchUserStories } from '../actions'
+import { fetchUserStories, addNewUserStory } from '../actions'
 
 
-function AddStory ({ setStories, closeAddForm }) {
+function AddStory ({ setStories, closeAddForm, dispatch }) {
   const [newStory, setNewStory] = useState(false)
 
   function handleAddChange (e) {
@@ -18,7 +18,7 @@ function AddStory ({ setStories, closeAddForm }) {
 
   function handleAdd () {
     //const story = { ...newStory }
-    addUserStory(newStory)
+    dispatch(addNewUserStory(newStory))
       .then(setStories)
       .then(closeAddForm)
       .then(getUserStories)
@@ -53,7 +53,7 @@ function AddStory ({ setStories, closeAddForm }) {
 }
 
 
-export default AddStory
+export default connect()(AddStory)
 
 
 

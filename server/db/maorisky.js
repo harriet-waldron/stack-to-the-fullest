@@ -5,7 +5,8 @@ function getMaoriSky (db = connection) {
 }
 
 
-module.exports = getMaoriSky
-
+module.exports = {
+   getMaoriSky
+}
 
 // {id: 3, constname: 'Tautoro', story: 'Say some things', userstory: "Met a star three times"}

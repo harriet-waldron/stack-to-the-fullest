@@ -13,19 +13,18 @@ function UserStory (props) {
   
 console.log(props)
   return (
-    <>
-    {/* props.userstories.map(userstory => (
-      <li key={userstories.name}>
+    props.userstory.map(userstory => (
+      <li key={userstory.name}>
           {userstory.name} // {userstory.userstory}
       </li>
-    )) */}
-    </>
+    ))
   )
 }
 
 const mapStateToProps = (globalState) => {
+  console.log(globalState.userstory)
   return {
-    userstories: globalState.userstories
+    userstory: globalState.userstory
   }
 }
 

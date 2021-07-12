@@ -46,10 +46,10 @@ import { getUserStories, addUserStory, updateUserStory, deleteUserStory } from '
 
 export const SET_USERSTORY = 'SET_USERSTORY'
 
-export function setUserStory (userstories) {
+export function setUserStory (userstory) {
   return {
     type: SET_USERSTORY,
-    userstories
+    userstory
   }
 }
 
@@ -57,8 +57,16 @@ export function fetchUserStories () {
   return dispatch => {
     return getUserStories()
       .then(userstory => {
-        dispatch(setUserStories(userstory))
-        return null
+        return dispatch(setUserStory(userstory))
+      })
+  }
+}
+
+export function addNewUserStory (newstory) {
+  return dispatch => {
+    return addUserStory(newstory)
+      .then(userstory => {
+        return dispatch(setUserStory(userstory))
       })
   }
 }

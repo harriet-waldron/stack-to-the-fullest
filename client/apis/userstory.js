@@ -8,7 +8,7 @@ export function getUserStories () {
   return request.get(rootUrl)
     .set(acceptJsonHeader)
     .then(res => {
-      console.log(res.body.userstories)
+     return res.body
     })
     .catch(logError)
 }

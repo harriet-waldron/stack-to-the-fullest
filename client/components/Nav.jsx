@@ -10,9 +10,10 @@ function Nav () {
   return (
     <>
         <Link to='/'>Home</Link> <br />
-        <Link to='/userstories'>User Stories</Link>
+        <Link to='/userstories'>User Stories</Link> <br />
         <IfAuthenticated>
-          <Link to='#' onClick={logOff}>Log off</Link>
+          <Link to='#' onClick={logOff}>Log off</Link> 
+          <br />
         </IfAuthenticated>
         <IfNotAuthenticated>
           <Link to='/register'>Register</Link> <br />

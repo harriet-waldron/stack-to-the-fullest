@@ -10,7 +10,8 @@ module.exports = router
 router.get('/', (req, res) => {
   db.getUserStories()
     .then(results => {
-      res.json({ userstories: results.map(userstory => userstory) })
+      console.log(results)
+      res.json(results)
       return null
     })
     .catch(err => {
@@ -30,7 +31,7 @@ router.post('/', getTokenDecoder(), async (req, res) => {
   }
 
   try {
-    const stories = await db.addStory(newStory, req.user)
+    const stories = await db.addUserStory(newStory, req.user)
     res.json({ stories })
   } catch (err) {
     res.status(500).send(err.message)

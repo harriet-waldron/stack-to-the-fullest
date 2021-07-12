@@ -14,10 +14,13 @@ async function addUserStory (userstory, user, db = connection) {
       userstory : userstory.userstory
     })
     // .then(() => db)
-    .then(getUserStories)
+    .then(() => { 
+      return getUserStories() 
+    })
     // .then(sort)
 }
 
 module.exports = {
+  getUserStories, 
   addUserStory
 }

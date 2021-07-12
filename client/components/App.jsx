@@ -32,9 +32,6 @@ function App () {
       <Route exact path='/signin' component={SignIn} />
       <Route exact path='/:constname' component={MaoriStarMyth} />
       
-      
-      
-      
       </div>
     </>
   )

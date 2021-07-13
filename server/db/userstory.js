@@ -19,10 +19,10 @@ async function addUserStory (userstory, user, db = connection) {
     // .then(sort)
 }
 
-async function deleteUserStory (id, userstory, user, db = connection) {
+async function deleteUserStory (id, user, db = connection) {
   // console.log(userstory)
 
-  userstory.added_by_user = user.id
+  // userstory.added_by_user = user.id
   return db('userstories')
     .delete()
     .where('id', id)

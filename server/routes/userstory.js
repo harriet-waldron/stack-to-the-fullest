@@ -41,6 +41,7 @@ router.post('/', getTokenDecoder(), async (req, res) => {
 
 router.delete('/:id', getTokenDecoder(), async (req, res) => {
   const id = Number(req.params.id)
+  console.log(id)
   try {
     const story = await db.deleteUserStory(id, req.user)
     res.json({ story })

@@ -17,12 +17,11 @@ function UserStory (props) {
   }
   
   return (
-    props.userstory.map((userstory, id) => (
+    props.userstory.map((userstory) => (
       <li key={userstory.id}>
           {userstory.name} // {userstory.userstory}
-          <button type='button' onClick={() => handleDelete(id)}>Delete Story</button>
+          <button type='button' onClick={() => handleDelete(userstory.id)}>Delete Story</button>
       </li>
-      
     ))
   )
 }

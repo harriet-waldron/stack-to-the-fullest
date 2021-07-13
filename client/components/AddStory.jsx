@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { getUserStories, addUserStory } from '../apis/userstory'
 import { fetchUserStories, addNewUserStory } from '../actions'
+import UserStory from './UserStory'
 
 
 function AddStory ({ setStories, closeAddForm, dispatch }) {
@@ -48,6 +49,7 @@ function AddStory ({ setStories, closeAddForm, dispatch }) {
         <button type='button' onClick={handleAdd}>Add Story</button>
         {/* <button type='button' onClick={closeAddForm}>Close</button> */}
       </form>
+      <UserStory />
     </>
   )
 }

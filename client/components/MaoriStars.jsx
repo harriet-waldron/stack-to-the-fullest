@@ -15,7 +15,7 @@ function MaoriStars (props) {
   return (
     props.maorisky.map(maorisky => (
       <li key={maorisky.constname}>
-        <Link to={`/${maorisky.constname}`}>
+        <Link to={`/constellation/${maorisky.constname}`}>
           {maorisky.constname} // {maorisky.engname}
         </Link>
       </li>

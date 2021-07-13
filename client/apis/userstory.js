@@ -32,6 +32,7 @@ export function updateUserStory (userstory) {
 
 export function deleteUserStory (id) {
   console.log('this is the id', id)
+  // that is NOT the id, that is the index
   return request.delete(`${rootUrl}/${id}`)
     .set(acceptJsonHeader)
     .set(getAuthorizationHeader())

@@ -1,0 +1,6 @@
+make stories, add, delete, update and changes stick when logged in 
+make login and register portals (will auth work when deployed?)
+have add story show when logged in
+flesh out database with actual information
+add section on creation myths, maramataka, navigation, user stories, contact info, resources page (SMART etc)
+style, find images etc

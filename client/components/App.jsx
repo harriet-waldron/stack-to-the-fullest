@@ -1,30 +1,43 @@
-import React, { useEffect } from 'react'
-import { connect } from 'react-redux'
+import React from 'react'
+import { Route } from 'react-router-dom'
 
-import { fetchFruits } from '../actions'
 
-function App (props) {
-  useEffect(() => {
-    props.dispatch(fetchFruits())
-  }, [])
+//import { fetchPlanets } from '../actions'
 
+import Header from './Header'
+import AddStory from './AddStory'
+import UserStory from './UserStory'
+import D3Prac from './D3Prac'
+import MaoriStars from './MaoriStars'
+import MaoriStarMyth from './MaoriStarMyth'
+import Nav from './Nav'
+import Register from './Register'
+import SignIn from './SignIn'
+
+function App () {
+ 
   return (
     <>
       <div className='app'>
-        <h1>Fullstack Boilerplate - with Fruits!</h1>
-        <ul>
-          {props.fruits.map(fruit => (
-            <li key={fruit}>{fruit}</li>
-          ))}
-        </ul>
+      <Nav />
+
+      <D3Prac />
+      <Header />
+      
+      {/* <Route exact path='/userstories/add' component={AddStory} /> */}
+      <Route exact path='/userstories' component={AddStory} />
+      <Route exact path='/register' component={Register} />
+      <Route exact path='/signin' component={SignIn} />
+      <Route exact path='/' component={MaoriStars} />
+      <Route exact path='/constellation/:constname' component={MaoriStarMyth} />
+      
       </div>
     </>
   )
 }
-const mapStateToProps = (globalState) => {
-  return {
-    fruits: globalState.fruits
-  }
-}
+// import Register from './Register'
+// import SignIn from './SignIn'
+//  <Route path='/register' component={Register} />
+{/* <Route path='/signin' component={SignIn} /> */}
 
-export default connect(mapStateToProps)(App)
+export default App

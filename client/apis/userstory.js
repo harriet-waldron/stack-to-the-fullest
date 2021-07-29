@@ -8,6 +8,7 @@ export function getUserStories () {
   return request.get(rootUrl)
     .set(acceptJsonHeader)
     .then(res => {
+      console.log(res.body)
      return res.body
     })
     .catch(logError)
@@ -18,7 +19,7 @@ export function addUserStory (userstory) {
     .set(acceptJsonHeader)
     .set(getAuthorizationHeader())
     .send(userstory)
-    .then(res => res.body.userstory)
+    .then(res => res.body.stories)
 }
 
 export function updateUserStory (userstory) {

@@ -62,12 +62,27 @@ export function fetchUserStories () {
   }
 }
 
+export const ADD_USER_STORY = 'ADD_USER_STORY'
+
+export function addUserStoryAction (newstory) {
+  return {
+    type: ADD_USER_STORY,
+    newstory
+  }
+}
+
 export function addNewUserStory (newstory) {
   return dispatch => {
+    console.log(newstory)
     return addUserStory(newstory)
       .then(userstory => {
-        return dispatch(setUserStory(userstory))
+        console.log(userstory)
+        return dispatch(addUserStoryAction(userstory))
       })
+      .then(() => {
+        dispatch(fetchUserStories())
+      })
+      .catch(err => (err.message))
   }
 }
 
@@ -88,5 +103,9 @@ export function deleteStory (id) {
         console.log('this is the output', output)
         dispatch(delUserStory(output))
       })
+      .then(() => {
+        dispatch(fetchUserStories())
+      })
+      .catch(err => (err.message))
   }
 }

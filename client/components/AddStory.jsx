@@ -18,12 +18,12 @@ function AddStory ({ setStories, closeAddForm, dispatch }) {
   }
 
   function handleAdd () {
+    console.log(newStory)
     //const story = { ...newStory }
     dispatch(addNewUserStory(newStory))
-      .then(setStories)
-      .then(closeAddForm)
-      .then(getUserStories)
-      .catch(err => (err.message))
+      //.then(setStories)
+      //.then(closeAddForm)
+     
   }
 
   const { name: addingName, userstory: addingStory } = newStory

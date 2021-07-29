@@ -66,35 +66,55 @@ text {
 
 <body>
 <script src="//d3js.org/d3.v3.min.js"></script>
+<script src="https://d3js.org/d3-queue.v3.min.js"></script>
 <script>
             
+            d3.queue() 
+                .defer(d3.csv, "/stars.csv")
+                // .defer(d3.csv, "data/constellation_links.csv")
+                // .defer(d3.csv, "data/constellation_names.csv")
+                // .defer(d3.csv, "data/constellations_per_star.csv")
+                .await(dataLoaded)
+               
+            let data_loaded = false
+            let stars
+            let star_by_id = {}
+            function dataLoaded() {
+                //Put loaded data into the variables
+                [error, stars] = [...arguments]
+                if (error) throw error
 
-            // let data_loaded = false
-            // let stars
-            // let star_by_id = {}
-            // function dataLoaded() {
-            //     //Put loaded data into the variables
-            //     [error, stars] = [...arguments]
-            //     if (error) throw error
+                stars.forEach(d => {
+                    d.hip = +d.hip
+                    d.ra = +d.ra
+                    d.dec = +d.dec
+                    d.mag = +d.mag
+                    d.absmag = +d.absmag
+                    d.t_eff = +d.t_eff
+                    d.constellations = +d.constellations
+                })//forEach
 
-            //     stars.forEach(d => {
-            //         d.hip = +d.hip
-            //         d.ra = +d.ra
-            //         d.dec = +d.dec
-            //         d.mag = +d.mag
-            //         d.absmag = +d.absmag
-            //         d.t_eff = +d.t_eff
-            //         d.constellations = +d.constellations
-            //     })//forEach
+                // const_links.forEach(d => {
+                //     d.source = +d.source
+                //     d.target = +d.target
+                // })//forEach
 
-            //     stars.forEach(d => {
-            //         star_by_id[d.hip] = d
-            //     })//forEach
+                // const_per_star.forEach(d => {
+                //     d.star_id = +d.star_id
+                // })//forEach
 
-            //     data_loaded = true
-            //     checkAllLoaded()
-            // }//function dataLoaded
+                // stars.forEach(d => {
+                //     star_by_id[d.hip] = d
+                // })//forEach
 
+                data_loaded = true
+                checkAllLoaded()
+            //function dataLoaded
+            
+            function checkAllLoaded() {
+                if( data_loaded) setupStarMaps(stars)
+            }//function checkAllLoaded
+        }//function loadAllAssets
 
 var width = 960,
     height = 960,
@@ -130,6 +150,7 @@ svg.append("path")
     .attr("class", "graticule")
     .attr("d", path);
 
+    // is the Error: <circle> attribute r: Expected length, "NaN". here??
 var crossDeclination = svg.append("circle")
     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
     .attr("class", "cross cross--declination");
@@ -244,20 +265,6 @@ function flippedStereographic(lambda, phi)  {
 }
 
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

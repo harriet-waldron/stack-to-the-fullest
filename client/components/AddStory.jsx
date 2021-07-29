@@ -16,9 +16,10 @@ function AddStory ({ setStories, closeAddForm, dispatch }) {
       [name]: value
     })
   }
-
+  
+  //const story = { ...newStory }
+  
   function handleAdd () {
-    //const story = { ...newStory }
     dispatch(addNewUserStory(newStory))
       .then(setStories)
       .then(closeAddForm)
@@ -58,5 +59,11 @@ function AddStory ({ setStories, closeAddForm, dispatch }) {
 export default connect()(AddStory)
 
 
+// // function addStory (newstory){
+// return dispatch => {
+// call api that adds to db // addStoryApi(newstory) addUserStory is the api
+//.then( () => dispatch(addStoryToStore(newstory)) )
+//addStoryToStore(newstory) is an action that adds a new story to the store  addNewUserStory is my action function
+//where do i put this?
 
 

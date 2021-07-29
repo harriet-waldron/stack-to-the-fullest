@@ -19,17 +19,17 @@ function App () {
   return (
     <>
       <div className='app'>
-      {/* <Nav /> */}
+      <Nav />
 
       <D3Prac />
-      {/* <Header />
+      <Header />
       
-      {/* <Route exact path='/userstories/add' component={AddStory} /> */}
-      {/* <Route exact path='/userstories' component={AddStory} />
+      <Route exact path='/userstories/add' component={AddStory} />
+      <Route exact path='/userstories' component={AddStory} />
       <Route exact path='/register' component={Register} />
       <Route exact path='/signin' component={SignIn} />
       <Route exact path='/' component={MaoriStars} />
-      <Route exact path='/constellation/:constname' component={MaoriStarMyth} /> */} 
+      <Route exact path='/constellation/:constname' component={MaoriStarMyth} /> 
       
       </div>
     </>
@@ -37,7 +37,7 @@ function App () {
 }
 // import Register from './Register'
 // import SignIn from './SignIn'
-//  <Route path='/register' component={Register} />
-{/* <Route path='/signin' component={SignIn} /> */}
+{/* <Route path='/register' component={Register} />
+<Route path='/signin' component={SignIn} /> */}
 
 export default App

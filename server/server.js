@@ -16,5 +16,8 @@ server.use('/api/v1/planets', planetRoutes)
 server.use('/api/v1/maorisky', maoriSkyRoutes)
 server.use('/api/v1', authRoutes)
 server.use('/api/v1/userstories', userStoryRoutes)
+server.get('/', (req, res) => {
+  res.send()
+})
 
 module.exports = server

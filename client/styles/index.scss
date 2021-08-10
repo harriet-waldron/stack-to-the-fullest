@@ -6,29 +6,42 @@ html,
 body {
   background-color: cadetblue;
   font-family: 'Montserrat', sans-serif;
+  text-align: center;
 }
 
-
-@media only screen and (max-width: 760px) {
-  html,
-  body {
-    background-color: lightblue;
-  }
+.banner {
+  width: 100%;
+  cursor: pointer;
+  background-color: #e9ffff;
+  display: flex;
+  justify-content: space-evenly;
 }
 
-@media only screen and (max-width: 320px) {
-  html,
-  body {
-    background-color: blue;
-    font-weight: bold;
-    color: whitesmoke;
-  }
+.banner a {
+  text-decoration: none;
+  text-transform: uppercase;
 }
 
-@media only screen and (min-width: 1200px) {
-  html,
-  body {
-    background-color: rgb(193, 173, 230);
-    font-size: 2.5em;
-  }
-}
+// @media only screen and (max-width: 760px) {
+//   html,
+//   body {
+//     background-color: lightblue;
+//   }
+// }
+
+// @media only screen and (max-width: 320px) {
+//   html,
+//   body {
+//     background-color: blue;
+//     font-weight: bold;
+//     color: whitesmoke;
+//   }
+// }
+
+// @media only screen and (min-width: 1200px) {
+//   html,
+//   body {
+//     background-color: rgb(193, 173, 230);
+//     font-size: 2.5em;
+//   }
+// }

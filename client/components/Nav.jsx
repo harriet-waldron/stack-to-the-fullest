@@ -8,7 +8,7 @@ import { IfAuthenticated, IfNotAuthenticated } from './Auth'
 
 function Nav () {
   return (
-    <>
+    <div className='banner'>
         <Link to='/'>Home</Link> <br />
         <Link to='/userstories'>User Stories</Link> <br />
         <IfAuthenticated>
@@ -19,7 +19,7 @@ function Nav () {
           <Link to='/register'>Register</Link> <br />
           <Link to='/signin'>Sign in</Link> <br />
         </IfNotAuthenticated>
-    </>
+    </div>
   )
 }
 

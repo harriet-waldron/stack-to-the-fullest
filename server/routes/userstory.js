@@ -1,3 +1,6 @@
+//These try catch statements are what worked for the auth stuff, am a little unfamiliar
+// with them. also auth in general
+
 const express = require('express')
 const { getTokenDecoder } = require('authenticare/server')
 
@@ -8,7 +11,8 @@ const router = express.Router()
 module.exports = router
 
 router.get('/', (req, res) => {
-  db.getUserStories()
+  // changed below func to add DB, because I think it is coming from database func
+  db.getUserStoriesDB()
     .then(results => {
       console.log(results)
       res.json(results)
@@ -20,10 +24,11 @@ router.get('/', (req, res) => {
     })
 })
 
-// POST /api/v1/storysky
+
 router.post('/', getTokenDecoder(), async (req, res) => {
- // console.log(req.user)
-  const newStory = req.body
+ 
+  // changed const to add Post at end
+  const newStoryPost = req.body
   if (req.user) {
     console.log('username:', req.user.username)
   } else {
@@ -31,8 +36,10 @@ router.post('/', getTokenDecoder(), async (req, res) => {
   }
 
   try {
-    const stories = await db.addUserStory(newStory, req.user)
-    res.json({ stories })
+    //changed adduserstory func, add DB. changed param to match above const
+    // and below const to add Post
+    const storiesPost = await db.addUserStoryDB(newStoryPost, req.user)
+    res.json({ storiesPost })
   } catch (err) {
     res.status(500).send(err.message)
   }
@@ -43,7 +50,8 @@ router.delete('/:id', getTokenDecoder(), async (req, res) => {
   const id = Number(req.params.id)
   console.log(id)
   try {
-    const story = await db.deleteUserStory(id, req.user)
+    //changed below func name, add DB
+    const story = await db.deleteUserStoryDB(id, req.user)
     res.json({ story })
   } catch (err) {
     if (err.message === 'Unauthorized') {

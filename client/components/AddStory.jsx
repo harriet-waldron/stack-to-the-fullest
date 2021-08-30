@@ -1,32 +1,31 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+//import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { getUserStories, addUserStory } from '../apis/userstory'
-import { fetchUserStories, addNewUserStory } from '../actions'
+//import { getUserStoriesAPI, addUserStoryAPI } from '../apis/userstory'
+import { fetchUserStoriesAction, addNewUserStoryAction } from '../actions'
 import UserStory from './UserStory'
 
 
 function AddStory ({ setStories, closeAddForm, dispatch }) {
-  const [newStory, setNewStory] = useState(false)
+  const [newStoryState, setNewStoryState] = useState(false)
 
   function handleAddChange (e) {
     const { name, value } = e.target
-    setNewStory({
-      ...newStory,
+    setNewStoryState({
+      ...newStoryState,
       [name]: value
     })
   }
 
   function handleAdd () {
-    console.log(newStory)
-    //const story = { ...newStory }
-    dispatch(addNewUserStory(newStory))
+    //changed newstory to add state
+    dispatch(addNewUserStoryAction(newStoryState))
       //.then(setStories)
       //.then(closeAddForm)
-     
   }
-
-  const { name: addingName, userstory: addingStory } = newStory
+  
+//what does this line do exactly?
+  const { name: addingName, userstory: addingStory } = newStoryState
 
   return (
     <>

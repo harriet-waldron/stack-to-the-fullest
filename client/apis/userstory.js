@@ -4,7 +4,10 @@ import { getAuthorizationHeader } from 'authenticare/client'
 const rootUrl = '/api/v1/userstories'
 const acceptJsonHeader = { Accept: 'application/json' }
 
-export function getUserStories () {
+//add api to end of all funcs and input to params
+//remind me, where do apis get their input from?
+
+export function getUserStoriesAPI () {
   return request.get(rootUrl)
     .set(acceptJsonHeader)
     .then(res => {
@@ -14,25 +17,27 @@ export function getUserStories () {
     .catch(logError)
 }
 
-export function addUserStory (userstory) {
+export function addUserStoryAPI (userstoryinput) {
   return request.post(rootUrl)
     .set(acceptJsonHeader)
     .set(getAuthorizationHeader())
-    .send(userstory)
+    .send(userstoryinput)
+    //where is stories from? body ofc but..
     .then(res => res.body.stories)
 }
 
-export function updateUserStory (userstory) {
+export function updateUserStoryAPI (userstoryinput) {
   return request.put(rootUrl)
     .set(acceptJsonHeader)
     .set(getAuthorizationHeader())
-    .send(userstory)
+    .send(userstoryinput)
+    //where is userstory from? potentially from routes?
     .then(res => res.body.userstory)
     .catch(logError)
 }
 
-export function deleteUserStory (id) {
-  console.log('this is the id', id)
+export function deleteUserStoryAPI (id) {
+  // console.log('this is the id', id)
   // that is NOT the id, that is the index
   return request.delete(`${rootUrl}/${id}`)
     .set(acceptJsonHeader)
@@ -41,11 +46,11 @@ export function deleteUserStory (id) {
     .catch(logError)
 }
 
-function logError (err) {
+//why was this not being exported?
+ function logError (err) {
   if (err.message === 'Forbidden') {
     throw new Error('Only the user who added the story may update and delete it')
   } else {
-    // eslint-disable-next-line no-console
     console.error(
       'Error consuming the API (in client/api.js):',
       err.message

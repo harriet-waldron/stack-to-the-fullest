@@ -1,26 +1,26 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 
-import { fetchUserStories, deleteStory } from '../actions'
+import { fetchUserStoriesAction, deleteStoryAction } from '../actions'
 
 
 function UserStory (props) {
 
   
   useEffect(() => {
-    props.dispatch(fetchUserStories())
+    props.dispatch(fetchUserStoriesAction())
   }, [])
   
   function handleDelete (id) {
       //const story = { ...newStory }
-    props.dispatch(deleteStory(id))
+    props.dispatch(deleteStoryAction(id))
   }
   
   return (
-    props.userstory.map((userstory) => (
-      <li key={userstory.id}>
-          {userstory.name} // {userstory.userstory}
-          <button type='button' onClick={() => handleDelete(userstory.id)}>Delete Story</button>
+    props.userstory.map((userstoryinput) => (
+      <li key={userstoryinput.id}>
+          {userstoryinput.name} // {userstoryinput.userstory}
+          <button type='button' onClick={() => handleDelete(userstoryinput.id)}>Delete Story</button>
       </li>
     ))
   )

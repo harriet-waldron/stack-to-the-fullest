@@ -42,45 +42,53 @@ export function fetchMaoriSky () {
   }
 }
 
-import { getUserStories, addUserStory, updateUserStory, deleteUserStory } from '../apis/userstory'
+//APIs are the most confusing, whhere are actions called vs where are apis called?
+//changed in response to api change
+import { getUserStoriesAPI, addUserStoryAPI, updateUserStoryAPI, deleteUserStoryAPI } from '../apis/userstory'
 
 export const SET_USERSTORY = 'SET_USERSTORY'
 
-export function setUserStory (userstory) {
+//adding action to these funcs
+export function setUserStoryAction (userstory) {
   return {
     type: SET_USERSTORY,
+    //where is userstory from? must be input? I'll change it to match param for now
+    //i think its a reducer
     userstory
   }
 }
 
-export function fetchUserStories () {
+export function fetchUserStoriesAction () {
   return dispatch => {
-    return getUserStories()
-      .then(userstory => {
-        return dispatch(setUserStory(userstory))
+    //add api end
+    return getUserStoriesAPI()
+      .then(result => {
+        //change to add action.. 
+        return dispatch(setUserStoryAction(result))
       })
   }
 }
 
 export const ADD_USER_STORY = 'ADD_USER_STORY'
 
-export function addUserStoryAction (newstory) {
+export function addUserStoryAction (newstoryinput) {
   return {
     type: ADD_USER_STORY,
-    newstory
+    newstoryinput
   }
 }
 
-export function addNewUserStory (newstory) {
+export function addNewUserStoryAction (newstoryinput) {
   return dispatch => {
-    console.log(newstory)
-    return addUserStory(newstory)
-      .then(userstory => {
-        console.log(userstory)
-        return dispatch(addUserStoryAction(userstory))
+    
+    //add api, was this right? unsure
+    return addUserStoryAPI(newstoryinput)
+      .then(result => {
+        
+        return dispatch(addUserStoryAction(result))
       })
       .then(() => {
-        dispatch(fetchUserStories())
+        dispatch(fetchUserStoriesAction())
       })
       .catch(err => (err.message))
   }
@@ -88,23 +96,25 @@ export function addNewUserStory (newstory) {
 
 export const DEL_USER_STORY = 'DEL_USER_STORY'
 
-export function delUserStory (id) {
+export function delUserStoryAction (id) {
   return {
     type: DEL_USER_STORY,
     id: id
   }
 }
+//should I be naming these differently? I'm not sure they're both actions. The first one def is
 
-export function deleteStory (id) {
+export function deleteStoryAction (id) {
   return dispatch => {
-    deleteUserStory(id)
+    deleteUserStoryAPI(id)
    //here is the issue
       .then((output) => {
         console.log('this is the output', output)
-        dispatch(delUserStory(output))
+        dispatch(delUserStoryAction(output))
+        //so this function dispatches itself?
       })
       .then(() => {
-        dispatch(fetchUserStories())
+        dispatch(fetchUserStoriesAction())
       })
       .catch(err => (err.message))
   }

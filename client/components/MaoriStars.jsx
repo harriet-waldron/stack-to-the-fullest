@@ -3,19 +3,20 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-import { fetchMaoriSky } from '../actions'
+import { fetchMaoriSkyAction } from '../actions'
 
 function MaoriStars (props) {
   
   useEffect(() => {
-    props.dispatch(fetchMaoriSky())
+    props.dispatch(fetchMaoriSkyAction())
   }, [])
 
 
+  console.log(props)
   return (
     props.maorisky.map(maorisky => (
-      <li key={maorisky.constname}>
-        <Link to={`/constellation/${maorisky.constname}`}>
+      <li key={maorisky.id}>
+        <Link to={`/constellation/${maorisky.id}`}>
           {maorisky.constname} // {maorisky.engname}
         </Link>
       </li>

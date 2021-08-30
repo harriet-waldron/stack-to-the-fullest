@@ -1,19 +1,19 @@
-import { getPlanets } from '../apis/planets'
+import { getPlanetsAPI } from '../apis/planets'
 
 export const SET_PLANETS = 'SET_PLANETS'
 
-export function setPlanets (planets) {
+export function setPlanetsAction (planets) {
   return {
     type: SET_PLANETS,
     planets
   }
 }
 
-export function fetchPlanets () {
+export function fetchPlanetsAction () {
   return dispatch => {
-    return getPlanets()
-      .then(planets => {
-        dispatch(setPlanets(planets))
+    return getPlanetsAPI()
+      .then(result => {
+        dispatch(setPlanetsAction(result))
         return null
       })
   }
@@ -21,22 +21,22 @@ export function fetchPlanets () {
 
 
 
-import { getMaoriSky } from '../apis/maorisky'
+import { getMaoriSkyAPI } from '../apis/maorisky'
 
 export const SET_MAORISKY = 'SET_MAORISKY'
 
-export function setMaoriSky (maorisky) {
+export function setMaoriSkyAction(maorisky) {
   return {
     type: SET_MAORISKY,
     maorisky
   }
 }
 
-export function fetchMaoriSky () {
+export function fetchMaoriSkyAction () {
   return dispatch => {
-    return getMaoriSky()
-      .then(maorisky => {
-        dispatch(setMaoriSky(maorisky))
+    return getMaoriSkyAPI()
+      .then(result => {
+        dispatch(setMaoriSkyAction(result))
         return null
       })
   }

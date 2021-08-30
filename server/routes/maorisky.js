@@ -7,7 +7,7 @@ const router = express.Router()
 module.exports = router
 
 router.get('/', (req, res) => {
-  db.getMaoriSky()
+  db.getMaoriSkyDB()
     .then(results => {
       res.json({ maorisky: results.map(maorisky => maorisky) })
       return null

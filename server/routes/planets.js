@@ -5,7 +5,7 @@ const db = require('../db/planets')
 const router = express.Router()
 
 router.get('/', (req, res) => {
-  db.getPlanets()
+  db.getPlanetsDB()
     .then(results => {
       res.json({ planets: results.map(planet => planet.name) })
       return null

@@ -29,7 +29,7 @@ function App () {
       <Route exact path='/register' component={Register} />
       <Route exact path='/signin' component={SignIn} />
       <Route exact path='/' component={MaoriStars} />
-      <Route exact path='/constellation/:constname' component={MaoriStarMyth} />
+      <Route path='/constellation/:id' component={MaoriStarMyth} />
       
       </div>
     </>
